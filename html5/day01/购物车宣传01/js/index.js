@@ -13,16 +13,30 @@ $(function($) {
             afterLoad: function(link, index) {
                 //当滚到某一屏的时候，给需要做动画的元素加上一个类
                 $('.section').eq(index-1).addClass('load');
-
+                $('.more').fadeIn();
             },
             //5.离开某一屏的的回调函数
             onLeave: function(index, nextindex, direction) {
+                $('.more').fadeOut();
                 //如果是从第
                 if(index == 2 && nextindex == 3) {
                     $('.section').eq(index-1).addClass('leaved');
                 } else if(index == 3 && nextindex == 4) {
                     $('.section').eq(index-1).addClass('leaved');
                 }
+            },
+            //页面结构搭建完成之后的回调函数
+            afterRender: function() {
+                //点击更多，滚到下一页
+                $('.more').on('click', function() {
+                    $.fn.fullpage.moveSectionDown();
+                });
+
+                //执行动画完成之后的回调函数
+                $('.screen04 .cart').on('animationend', function() {
+                    $('.screen04 .text').addClass('show');
+                    $('.screen04 .address').fadeIn().find('img:last').fadeIn(1000);
+                })
             }
         })
 })

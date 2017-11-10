@@ -126,15 +126,15 @@
     opacity: 0;
 }
 .screen02.load .input {
-    animation: input02 3s linear forwards;
+    animation: input02 4s linear forwards;
 }
 .screen02.load .input .key {
     opacity: 1;
-    transition: all 1s linear 1s;
+    transition: all 1s linear 1.5s;
 }
 .screen02.load .goods {
     transform: scale(1);
-    transition: all 1s linear 2s;
+    transition: all 1s linear 3s;
 }
 
 @keyframes input02 {
@@ -142,10 +142,10 @@
         opacity: 1;
         transform: translate(2000px, 120px);
     }
-    33.3% {
+    25% {
         transform: translate(-168px,120px);
     }
-    67% {
+    75% {
         transform: translate(-168px,120px);
     }
     100% {
@@ -265,6 +265,10 @@
     position: absolute;
     opacity: 0;
 }
+.screen04 .text01 {
+   /* position: absolute;
+    opacity: 0;*/
+}
 .screen04 .sofa {
     position: absolute;
     left: 400px;
@@ -285,4 +289,26 @@
     to {
         transform: translateX(1000px);
     }
+}
+.screen04 .text.show .text01 {
+    position: absolute;
+    opacity: 0;
+}
+.screen04 .text.show .text02 {
+    position: static;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.screen04 .address {
+    position: absolute;
+    left: 306px;
+    margin-top: 50px;
+    display: none;
+}
+.screen04 .address img:last-child {
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    display: none;
 }

@@ -1,0 +1,321 @@
+/*思路：*/
+/**
+第一屏：有两个公共布局，更多和购物中心，其他都是偏移
+第二屏：1.当滚到某一屏的时候再执行当前这屏的动画，用到插件的回调函数，
+		2.搜索框，先从右侧运动到中间，搜索文字出现，停留，运动到原点，商品出现，
+		3.沙发，当离开第二屏的时候开始显示，并运动到第三屏的位置，用到插件离开的回调函数
+第三屏：1.调整滚动时间和运动时间一致，用到插件属性
+		2.当运动第三屏，沙发尺码和购物车显示
+		3.当离开第三屏的时候，沙发开始运动到第四瓶
+第四屏：1.沙发运动到四屏的购物车，四屏的沙发显示，并跟随购物车一起运动
+		2.购物车运动完之后，文字显示，收货地址显示，用到c3的属性，监听运动完之后
+*/
+
+
+/*公共部分*/
+.go {
+	z-index: 1001;
+	position: fixed;
+	top: 40px;
+	right: 40px;
+	transform-origin: 50.5px 50.5px;
+	animation: go 5s linear infinite;
+}
+.more {
+	z-index: 1001;
+	position: fixed;
+	right: 60px;
+	bottom: 60px;
+	animation: more 0.8s linear infinite alternate;
+						/*匀速 无限播放 逆播放*/
+}
+
+@keyframes more {
+	from {
+		transform: translateY(-30px);
+	}
+	to {
+		transform: translateY(30px);
+	}
+}
+@keyframes go {
+	from {}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.content {
+	width: 900px;
+	height: 600px;
+	background-color: rgba(0,0,0,.3);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -450px;
+
+}
+/*第一屏*/
+.screen01 {
+	background: url(../images/01-bg.png) center bottom no-repeat;
+}
+.screen01 .goods {
+	position: absolute;
+	left: 40px;
+	bottom: 100px;
+}
+.screen01 .fly {
+	position: absolute;
+	top: 0;
+	right: -50px;
+}
+.screen01 .sofa {
+	position: absolute;
+	top: 150px;
+	left: 200px;
+}
+.screen01.load .fly {
+	animation: fly 1.1s linear infinite alternate;
+}
+.screen01.load .sofa {
+	animation: sofa01 1s linear infinite alternate;
+}
+@keyframes fly {
+	from {
+		transform: translateY(-35px);
+	}
+	to {
+		transform: translateY(35px);
+	}
+}
+@keyframes sofa01 {
+	from {
+		transform: translateY(-30px);
+	}
+	to {
+		transform: translateY(30px);
+	}
+}
+
+/*第二屏*/
+
+.screen02 {
+	background: url(../images/02-bg.png) center bottom no-repeat;
+}
+.screen02 .text {
+	text-align: center;	
+	margin-top: 20px;
+}
+.screen02 .text02 {
+	position: absolute;
+	opacity: 0;
+}
+.screen02 .input {
+	position: absolute;
+	top: 122px;
+	right: 174px;
+	transform-origin: right top;
+	/*transform: scale(0.7);*/
+	opacity: 0;
+}
+
+.screen02 .key {
+	position: absolute;
+	top: 5px;
+	right: 50px;
+	opacity: 0;
+}
+.screen02 .goods {
+	position: absolute;
+	left: 50%;
+	margin-left: -220px;
+	bottom: 210px;
+	transform: scale(0);
+
+}
+.screen02 .sofa {
+	position: absolute;
+	top: 132px;
+	left: 292px;
+	transform: scale(0.5);
+	opacity: 0;
+	z-index: 1001;
+}
+.screen02.load .input {
+	animation: input 4s linear forwards;
+}
+.screen02.load .key {
+	opacity: 1;
+	transition: all 1s linear 1.5s;
+}
+.screen02.load .goods {
+	transform: scale(1);
+	transition: all 1s linear 3s;
+}
+@keyframes input {
+	0% {
+		opacity: 1;
+		transform: translate(1000px,120px);
+	}
+	25% {
+		transform: translate(-168px,120px);
+	}
+	75% {
+		transform: translate(-168px,120px);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(0.7);
+	}
+}
+.screen02.leaved .sofa {
+	animation: sofa02 1s linear;
+}
+
+/*第二屏到第三屏沙发动画*/
+@keyframes sofa02 {
+	from {
+		opacity: 1;
+	}
+	to {
+		transform: translate(-80px, 700px);
+		opacity: 1;
+	}
+}
+/*第三屏*/
+.screen03 {
+	background: url(../images/03-bg.png) center bottom no-repeat;
+}
+.screen03 .sofa {
+	position: absolute;
+	top: 200px;
+	left: 210px;
+	z-index: 1001;
+	opacity: 0;
+}
+.screen03 .change {
+	position: absolute;
+	right: 118px;
+    bottom: 162px;
+}
+.screen03 .change02 {
+	position: absolute;
+	opacity: 0;
+}
+.screen03 .cart {
+	position: absolute;
+	right: 168px;
+    bottom: 98px;
+}
+.screen03 .cart02 {
+	position: absolute;
+	opacity: 0;
+}
+ 
+
+.screen03.load .sofa {
+	opacity: 1;
+}
+.screen03.load .change02 {
+	position: static;
+	opacity: 1;
+	transition: all 1s linear;
+}
+.screen03.load .change01 {
+	position: absolute;
+	opacity: 0;
+}
+.screen03.load .cart02 {
+	position: static;
+	opacity: 1;
+	transition: all 1s linear;
+}
+.screen03.load .cart01 {
+	position: absolute;
+	opacity: 0;
+}
+/*第三屏到第四屏的沙发运动*/
+.screen03.leaved .sofa {
+	animation: sofa03 1s linear;
+}
+
+@keyframes sofa03 {
+	from {}
+	to {
+		transform: translate(180px,640px) rotate(15deg);
+	}
+}
+
+/*第四屏*/
+.screen04 {
+	background: url(../images/04-bg.png) center bottom no-repeat;
+}
+.screen04 .cloud {
+	position: absolute;
+	left: -100px;
+	top: -60px;
+	animation: cloud 20s linear infinite forwards;
+}
+@keyframes cloud {
+	from {
+		transform: translateX(1000px);
+	}
+	to {
+		transform: translateX(-1000px);
+	}
+}
+.screen04 .text{
+	text-align: center;
+	margin-top: 100px;
+}
+.screen04 .text02 {
+	position: absolute;
+	opacity: 0;
+}
+.screen04 .address {
+	position: absolute;
+	left: 306px;
+    margin-top: 50px;
+    display: none;
+}
+.screen04 .address02 {
+	position: absolute;
+	top: 60px;
+    right: 50px;
+    display: none;
+}
+
+.screen04 .cart {
+	position: absolute;
+	left: 230px;
+    bottom: 50px;
+    z-index: 1002;
+}
+.screen04 .sofa {
+	position: absolute;
+	left: 400px;
+    top: 170px;
+    opacity: 0;
+}
+.screen04.load .sofa {
+	opacity: 1;
+	animation: cart04 2s linear forwards;
+}
+.screen04.load .cart {
+	animation: cart04 2s linear forwards;
+}
+@keyframes cart04 {
+	from {}
+	to {
+		transform: translateX(1000px);
+	}
+}
+.screen04 .text.show .text01 {
+	position: absolute;
+	opacity: 0;
+}
+.screen04 .text.show .text02 {
+	position: static;
+	opacity: 1;
+	transition: all 1.5s linear;
+}
