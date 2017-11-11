@@ -46,6 +46,15 @@ $(function($) {
 				$('.section').eq(index-1).addClass('leaved');
 			} else if(index == 3 && nextindex == 4) {
 				$('.section').eq(index-1).addClass('leaved');
+			} else if(index == 5 && nextindex == 6) {
+				$('.section').eq(index-1).addClass('leaved');
+				$('.box').addClass('show');
+			} else if(index == 6 && nextindex == 7) {
+				// $('.screen07 .star').addClass('show');
+				$('.screen07 .star img').each(function(i, item) {
+					// $(item) == $(this);
+					$(this).delay(i * 0.5 *1000).fadeIn();
+				})
 			}
 		}
 

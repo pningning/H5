@@ -319,3 +319,350 @@
 	opacity: 1;
 	transition: all 1.5s linear;
 }
+
+
+/*第五屏*/
+/*思路
+1.移动到第五屏，手运动到鼠标鼠标上
+2.手运动到鼠标上，鼠标显示点击状态
+3.鼠标点击完，沙发从上面掉下来
+	a> 沙发先初始位置为最上面，账单开始显示出来
+	c> 沙发运动到原点
+4.移开第五屏的时候，开始做运动，运动到第六屏
+*/
+.screen05 {
+	background: url(../images/05-bg.png);
+}
+.screen05 .content {
+	width: 900px;
+	height: 100%;
+	background-color: rgba(0,0,0,.3);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -450px;
+	
+}
+.screen05 .text {
+	position: absolute;
+	bottom: 550px;
+}
+.screen05 .card {
+	position: absolute;
+	/*position: relative;*/
+	bottom: 210px;
+
+}
+.screen05 .cardImg {
+	position: relative;
+	z-index: 1001;
+}
+.screen05 .orderImg {
+	position: absolute;
+	top: -80px;
+	right: 100px;
+	opacity: 0;
+}
+.screen05 .sofa {
+	position: absolute;
+	bottom: 80px;
+	left: 90px;
+	opacity: 0;
+	z-index: 999;
+}
+.screen05 .mouse {
+	overflow: hidden;
+	position: absolute;
+	width: 300px;
+	height: 100%;
+	right: 0;
+	top: 0;
+
+}
+.screen05 .mouse img {
+	position: absolute;
+	right: 20px;
+	bottom: 220px;
+}
+.screen05 .mouse img:last-child {
+	
+	opacity: 0;
+}
+.screen05 .hand {
+	position: absolute;
+	bottom: -10px;
+	right: 75px;
+	opacity: 0;
+	transform: translateY(400px);
+}
+.screen05.load .hand {
+	opacity: 1;
+	transform: none;
+	transition: transform 0.5s linear;
+}
+.screen05.load .mouse img:last-child {
+	opacity: 1;
+	transition: all 0.1s linear 0.5s;
+}
+
+.screen05.load .sofa {
+	animation: sofa05 2s linear 0.6s forwards;
+}
+.screen05.load .orderImg {
+	animation: order 1s linear 1.6s forwards;
+}
+@keyframes sofa05 {
+	from {
+		opacity: 1;
+		transform: translateY(-600px);
+	}
+	50% {
+		transform: translateY(-130px);
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes order {
+	from {
+		transform: translateY(80px);
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+
+/*第六屏*/
+/*思路
+1.离家五页的时候沙发开始运动到第6屏，箱子开始运动
+
+2.沙发运动到箱子里，
+3.运动得箱子之后，箱子开始往下运动，运动到车里面
+4.运动到车里面，背景开始运动，
+5，车在运动的途中，先显示卖家地址，到了之后显示收货地址
+6. 到收货，快递小哥出来，
+先从车后面放大，再上来，在往右运动
+7.说一句话，上面的文字改变，同时开门
+8.开门，之后人从里面出来
+出来之后，往前运动一步
+*/
+
+/*第五屏到第六屏的沙发*/
+.screen05.leaved .sofa {
+	animation: sofa06 1s linear;
+}
+@keyframes sofa06 {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 1;
+		/*transition: ;*/
+		transform: translate(0, 460px) scale(0.2);
+	}
+}
+
+.screen06 {
+	background: url(../images/06-bg.png)  no-repeat 25% bottom;
+}
+
+.screen06 .cloud {
+	position: absolute;
+	top: -50px;
+
+}
+.screen06 .cloud01,
+.screen06 .cloud02 {
+	position: absolute;
+}
+.screen06 .cloud01 {
+	animation: cloud06 10s linear infinite alternate;
+}
+.screen06 .cloud02 {
+	animation: cloud06 15s linear infinite alternate;
+}
+
+@keyframes cloud06 {
+	from {
+		transform: translateX(500px);
+	}
+	to {
+		transform: translateX(-1500px);
+	}
+}
+.screen06 .box {
+	position: absolute;
+	top: 180px;
+	left: 140px;
+	z-index: 1000;
+}
+.screen06 .car {
+	position: absolute;
+	bottom: 0;
+	left: 110px;
+	z-index: 1001;
+}
+.screen06 .car .carImg {
+	opacity: 1;
+}
+.screen06 .buyer,
+.screen06 .address {
+	position: absolute;
+	bottom: 120px;
+	left: 180px;
+	opacity: 0;
+}
+.screen06 .car img {
+	/*opacity: 0;*/
+}
+
+.screen06.load .car .buyer {
+	opacity: 1;
+	transition: all 0.25s linear 1.25s;
+}
+.screen06.load .car .address {
+	opacity: 1;
+	transition: all 0.25s linear 1.75s;
+}
+.screen06 .box.show {
+	animation: box01 2s linear forwards;
+}
+
+@keyframes box01 {
+	from {
+		transform: translateX(-500px);
+	}
+	50% {
+		transform: none;
+	}
+	to {
+		transform: translateY(300px) scale(0.3);
+	}
+}
+.screen06.load {
+	transition: background 1s linear 1s;
+	background: url(../images/06-bg.png) no-repeat 100% bottom ;
+}
+
+.screen06 .worker {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	/*transform-origin: left bottom;*/
+	transform-origin: left bottom;
+	transform: scale(0);
+}
+.screen06.load .worker {
+	animation: workey 2.4s linear 2s forwards;
+}
+
+@keyframes workey {
+	from {
+		
+	}
+	25% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1) translateY(-100px);
+	}
+	to {
+		transform: scale(1) translate(200px, -100px);
+	}
+}
+.screen06 .car .say {
+	position: absolute;
+	top: -400px;
+	right: -280px;
+	opacity: 0;
+}
+.screen06.load .say {
+	opacity: 1;
+	transition: all 0.5s linear 4.4s;
+}
+.screen06 .text {
+	position: absolute;
+	top:  100px;
+	left: 150px;
+}
+.screen06 .text .text02 {
+	position:absolute;
+	opacity: 0;
+	top: 0;
+	left: 0;
+}
+.screen06.load .text02 {
+	opacity: 1;
+	transition: all 0.5s linear 4.9s;
+}
+.screen06.load .text01 {
+	opacity: 0;
+	transition: all 0.5s linear 4.9s;
+}
+.screen06 .door {
+	position: absolute;
+	right: 52px;
+	bottom: 113px;
+	opacity: 0;
+}
+.screen06.load .door {
+	opacity: 1;
+	transition: all 0.5s linear 4.9s;
+}
+.screen06 .person {
+	position: absolute;
+	right: 52px;
+	bottom: 113px;
+	transform-origin: right bottom;
+	transform: scale(0);
+}
+.screen06.load .person {
+	animation: person 1s linear 5.4s forwards;
+}
+@keyframes person {
+	from {}
+	50% {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1) translateX(-100px);
+	}
+}
+
+/*第七屏*/
+.screen07 {
+	background: url(../images/07-bg.png) center bottom no-repeat;
+}
+.screen07 .star {
+	position: absolute;
+	left: 157px;
+    top: 141px;
+}
+.screen07 .star img {
+	margin-right: 6px;
+	float: left;
+	display: none;
+}
+.screen07 .text {
+	position: absolute;
+	left: 157px;
+    top: 180px;
+    /*opacity: 0;*/
+    transform-origin: left bottom;
+    transform: scale(0);
+}
+.screen07.load .text {
+	animation: text07 2s linear forwards;
+}
+@keyframes text07 {
+	from {
+		
+	}
+	50% {
+		transform: scale(1.3) ;
+	}
+	to {
+		transform: none;
+	}
+}
