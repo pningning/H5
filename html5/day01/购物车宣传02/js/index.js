@@ -27,10 +27,21 @@ $(function($) {
 				$.fn.fullpage.moveSectionDown();
 			});
 			//
-			$('.screen04.load .cart').on('animationend', function() {
+			$('.screen04 .cart').on('animationend', function() {
 				$('.screen04 .address').fadeIn(1000).find('img:last').fadeIn(2000);
 				$('.screen04 .text').addClass('show');
-			})
+			});
+			$('.screen08').on('mousemove', function(e) {
+					$(this).find('.hand').offset({
+						top: e.clientY + 30,
+						left: e.clientX- 80
+					});
+				}).find('.again').on('click', function() {
+					$('.load,.leaved,.show').removeClass('load').removeClass('leaved').removeClass('show');
+					$('.content [style]').removeAttr('style');
+					//跳回第一页
+					$.fn.fullpage.moveTo(1);
+			});
 		},
 		//4.滚动某一个页面的时候的回调
 		afterLoad: function(link, index) {

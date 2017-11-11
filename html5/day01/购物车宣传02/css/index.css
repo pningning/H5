@@ -666,3 +666,34 @@
 		transform: none;
 	}
 }
+/*第八屏*/
+.screen08 {
+	background: url(../images/08-bg.png) 0 0 ;
+}
+.screen08 .btn {
+	position: absolute;
+	left: 50%;
+	width: 389px;
+	transform: translateX(-50%);
+}
+.screen08 .btn img:last-child {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+.screen08 .btn:hover img:last-child {
+	opacity: 1;
+}
+
+.screen08 .again {
+	position: absolute;
+	right: 30px;
+	top: 100px;
+}
+.screen08 .hand {
+	position: absolute;
+	left:50%;
+    top: 100px;
+    transform: translateX(-50%);
+}
