@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 560px;
+			height: 300px;
+			margin: 100px auto 0;
+			position: relative;
+		}
+		ul {
+			list-style: none;
+			width: 100%;
+			height: 100%;
+
+		}
+		ul li {
+			width: 112px;
+			height: 100%;
+			float: left;
+			position: relative;
+			transform-style: preserve-3d;
+			transition: all 1s;
+		}
+		ul li span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url(images/1.jpg) 0 0 no-repeat;
+			/*display: block;*/
+		}
+		ul li span:nth-child(1) {
+			background:url(images/1.jpg);
+			transform: translateZ(150px);
+		}
+		ul li span:nth-child(2) {
+			background: url(images/2.jpg);
+			transform: rotateX(90deg) translateZ(150px);
+		}
+		ul li span:nth-child(3) {
+			background: url(images/3.jpg);
+			transform: rotateX(180deg) translateZ(150px);
+		}
+		ul li span:nth-child(4) {
+			background: url(images/4.jpg);
+			transform: rotateX(-90deg) translateZ(150px);
+		}
+
+		ul li:nth-child(1) span {
+			background-position: 0 0;
+		}
+		ul li:nth-child(2) span {
+			background-position: -112px 0;
+		}
+		ul li:nth-child(3) span {
+			background-position: -224px 0;
+		}
+		ul li:nth-child(4) span {
+			background-position: -336px 0;
+		}
+		ul li:nth-child(5) span {
+			background-position: -448px 0;
+		}
+		div a {
+			display: block;
+			width: 60px;
+			height: 60px;
+			background: rgba(0,0,0,.3);
+			text-align: center;
+			text-decoration: none;
+			font-size: 20px;
+			color: #fff;
+			position: absolute;
+			top: 50%;
+			margin-top: -30px;
+			line-height: 60px;
+		}
+		div .right {
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+			<li>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</li>
+		</ul>
+		<a class="left" href="#">&lt</a>
+		<a class="right" href="#">&gt</a>
+	</div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+	$(function($) {
+		// 点击左右两边的时候，让所有的li。沿着x轴旋转90deg
+		//点击右边的
+		var index = 0;
+		var onOff = true;
+		$('.right').on('click', function() {
+			if(!onOff) return;
+			onOff = false;
+			index--;
+			var angle = index * 90;
+			$('li').css('transform', 'rotateX('+ angle +'deg)').each(function(i, item) {
+				$(this).css('transition-delay', i * 0.25 + 's');
+			});
+			$('li:last').on('transitionend', function() {
+				onOff = true;
+			})
+		});
+
+		//点击左边的
+		$('.left').on('click', function() {
+			if(!onOff) return;
+			onOff = false;
+			index++;
+			var angle = index * 90;
+			$('li').css('transform', 'rotateX('+ angle +'deg)').each(function(i, item) {
+				$(this).css('transition-delay', i * 0.25 + 's');
+			});
+			$('li:last').on('transitionend', function() {
+				onOff = true;
+			})
+		})
+
+	})
+</script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			list-style: none;
+		}
+		li {
+			width: 100px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			color: #fff;
+			background: green;
+			cursor: pointer;
+			float: left;
+		}
+		.active {
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>菜单1</li>
+		<li class="active">菜单2</li>
+		<li>菜单3</li>
+		<li>菜单4</li>
+		<li>菜单5</li>
+	</ul>
+</body>
+<script>
+	// var li = document.querySelector('li:last-child').innerHTML;
+	// var lili = document.querySelector('li:nth-child(4)').innerHTML;
+	// //获取所有的li,得到一个数组
+	// var lia = document.querySelectorAll('li');
+	// lia.classList.add('active');
+	//循环添加
+	// for(var i = 0; i < lia.length; i++) {
+	// 	// lia[i].classList.add('active');
+	// 	// lia[i].classList.toggle('active');
+	// 	// lia[i].classList.remove('active');
+	// 	console.log(lia[i].classList.contains('active'));
+	// }
+	// document.querySelector('ul').onclick = function(e) {
+	// 	var currentLi = e.target; 
+	// 	if(currentLi.classList.contains('active')) return;
+	// 	//找到带有avtive的li,把这个这个类从它的身上移除
+	// 	document.querySelector('li.active').classList.remove('active');
+	// 	currentLi.classList.add('active');
+	// } 
+
+
+		document.querySelector('ul').onclick = function(e) {
+			var currentLi = e.target;
+			if(currentLi.classList.contains('active')) return;
+			document.querySelector('li.active').classList.remove('active');
+			currentLi.classList.add('active');
+		}
+</script>
+</html>

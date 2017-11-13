@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul {
+			list-style: none;
+		}
+		.first li {
+			float: left;
+			width: 100px;
+			height: 40px;
+			background-color: red;
+			text-align: center;
+			line-height: 40px;
+		}
+		li.red {
+			background: pink;
+		}
+		.last li {
+			width: 400px;
+			height: 400px;
+			background-color: blue;
+			display: none;
+			text-align: center;
+			font-size: 40px;
+			line-height: 400px;
+		}
+		.last .show {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<ul class="first">
+		<li data-con="content01" class="red">菜单1</li>
+		<li data-con="content02">菜单2</li>
+		<li data-con="content03">菜单3</li>
+		<li data-con="content04">菜单4</li>
+	</ul>
+	<ul class="last">
+		<li id=content02>内容2</li>
+		<li id=content03>内容3</li>
+		<li id=content04>内容4</li>
+		<li id=content01 class="show">内容1</li>
+	</ul>
+</body>
+	<script>
+		document.querySelector('ul').onclick = function(e) {
+			var newli = e.target;
+			if(newli.classList.contains('red')) return;
+			var oldli = document.querySelector('li.red');
+			oldli.classList.remove('red');
+			newli.classList.add('red');
+			var oldContent = document.querySelector('#' + oldli.dataset.con );
+			oldContent.classList.remove('show');
+			var newContent = document.querySelector('#' + newli.dataset.con);
+			newContent.classList.add('show');
+		}
+
+		// 先找到触发这个事件的元素有没有这么类如果有返回，不继续进行
+		//如果没有，那么找到以前带着这个类的元素，把以前的那个删除，给现在点击的加上
+		//通过data自定义属性，找到下面内容对应着的id把之前的那个带有类的元素移除，给当前的类加上
+	</script>
+</html>
