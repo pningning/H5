@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+
+	</style>
+</head>
+<body>
+	<div></div>
+	<button>按钮</button>
+	<button>按钮2</button>
+</body>
+<script>
+	var div = document.getElementsByTagName('div')[0];
+	var btn = document.getElementsByTagName('button')[0];
+	var btn1 = document.getElementsByTagName('button')[1];
+	// 注意： 关于多媒体的API都要使用dom元素（也就是原生的方式获取的元素）不能使用jq的对象（jq方式获取的元素）
+	//用H5的方法获取dom元素并实现。全屏效果
+	// document.querySelector('button').onclick = function() {
+	// 	// document.querySelector('div').webkitRequestFullScreen();
+	// 	document.documentElement.webkitRequestFullScreen();
+
+	// }
+	btn.onclick = function() {
+		//让元素全屏显示
+		// div.webkitRequestFullScreen();
+		// 让页面文档全屏显示
+		document.documentElement.webkitRequestFullScreen()
+	}
+// }
+	btn1.onclick = function() {
+		//让元素全屏显示
+		div.webkitRequestFullScreen();
+		// 让页面文档全屏显示
+		// document.documentElement.webkitRequestFullScreen()
+	}
+
+</script>
+</html>

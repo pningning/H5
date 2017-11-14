@@ -9,7 +9,8 @@
 			width: 300px;
 			height: 300px;
 			transform-style:preserve-3d;
-			transform: rotateX(-30deg) rotateY(-30deg)  ;
+			transform: rotateX(-30deg) rotateY(180deg);
+			animation: run 3s linear infinite alternate;
 		}
 		.box>div {
 			width: 100%;
@@ -18,6 +19,15 @@
 			top: 0;
 			left: 0;
 			opacity:0.5
+
+		}
+		@keyframes run {
+			from {
+				transform: rotateX(-30deg) rotateY(-30deg);
+			}
+			to {
+				transform: rotateX(180deg) rotateY(180deg);
+			}
 		}
 		.top {
 			background-color: #ccc;
@@ -55,4 +65,18 @@
 		<div class="back"></div>
 	</div>
 </body>
+	<script src="3d切割轮播图/jquery.min.js"></script>
+	<script>
+		$(function($) {
+			//创建一个颜色的数组
+			var arr = ['pink',"deeppink","yellow","greenyellow","blue","red"];
+			$('.box>div').each(function(i,item) {
+				var ul = $('<ul></ul>');
+				for(var i = 0; i < 9; i++) {
+					var li = $('<li></li>');
+					li.css('backgroundColor', arr[index])
+				}
+			})
+		})
+	</script>
 </html>

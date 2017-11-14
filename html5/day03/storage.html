@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin-left: 300px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul li,div{
+            width: 250px;
+            padding: 10px 0;
+            margin-left: 10px;
+            border-bottom: 1px dashed #ccc;
+            height: 20px;
+        }
+        a{
+            float: right;
+        }
+        input{
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+	<input type="search" placeholder="输入搜索关键字"/>
+	<input type="button" value="搜索"/>
+	<div><a href="javascript:;">清空搜索记录</a></div>
+	<ul>
+	    <li>没有搜索记录</li>
+	  <!--   <li><span>手机</span><a href="javascript:;">删除</a></li>
+	    <li><span>手机</span><a href="javascript:;">删除</a></li>
+	    <li><span>手机</span><a href="javascript:;">删除</a></li>
+	    <li><span>手机</span><a href="javascript:;">删除</a></li>
+	    <li><span>手机</span><a href="javascript:;">删除</a></li> -->
+	</ul>
+</body>
+	<script src="jquery.min.js"></script>
+	<script>
+		$(function($) {
+			// 思路：要获取到localStorage的内容渲染到页面上
+			// 点击搜索的时候，把输入的内容设置到localStorage里面，通过json的格式存储，重新添加一些页面的内容
+			// 点击删除的时候，通过自动以属性把选中的那一个内容删除，重新渲染页面
+			// 点击清除的时候，把数组里面的内容清空，把本地存储清空
+			var historyJson = localStorage.getItem('history') || '[]';
+			//把一个字符串转化成数组
+			var historyArr = JSON.parse(historyJson);
+
+			function render() {
+
+				//定义一个空字符串
+				var html = '';
+				historyArr.forEach(function(item, i) {
+					html += '<li><span>'+ item +'</span><a data-index='+ i +' href="javascript:;">删除</a></li>';
+					html = html || '<li>没有搜索记录</li>';
+				});
+				$('ul').html(html);
+			}
+				render();
+
+			// 搜索
+				$('[type="button"]').on('click', function() {
+
+					var str = $.trim($('[type="search"]').val());
+					if(!str) {
+						alert('请输入搜索关键字');
+						return;
+					}
+					historyArr.push(str);
+					localStorage.setItem('history', JSON.stringify(historyArr));
+					render();
+					$('[type=search]').val('');
+				})
+
+			// 删除
+			$('ul').on('click','a', function() {
+
+				var index = $(this).data('index');
+				console.log(index)
+				historyArr.splice(index, 1);
+				localStorage.setItem('history', JSON.stringify(historyArr));
+
+				render();
+			})
+			// 全部清除
+			$('div a').on('click', function() {
+				console.log(1)
+				historyArr = [];
+				localStorage.setItem('history', '');
+				render();
+			})
+		})
+	</script>
+</html>
