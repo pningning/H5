@@ -73,12 +73,50 @@
 			this.ctx.lineTo(this.canvasWidth - this.space - this.arrowSize, this.y0 - this.arrowSize / 2);
 			this.ctx.lineTo(this.canvasWidth - this.space - this.arrowSize, this.y0 + this.arrowSize / 2);
 			this.ctx.lineTo(this.canvasWidth - this.space, this.y0);
-			// this.ctx.fill();
+			this.ctx.fill();
+			this.ctx.stroke();
+			// y轴
+			this.ctx.beginPath();
+			this.ctx.moveTo(this.x0, this.y0);
+			this.ctx.lineTo(this.x0, this.space);
+			this.ctx.lineTo(this.x0 - this.arrowSize / 2, this.space + this.arrowSize);
+			this.ctx.lineTo(this.x0 + this.arrowSize / 2, this.space + this.arrowSize);
+			this.ctx.lineTo(this.x0, this.space);
+			this.ctx.fill();
 			this.ctx.stroke();
 		}
 		// 绘制原点
-		LineChart.prototype.drawDotted = function() {
-			
+		LineChart.prototype.drawDotted = function(data) {
+			var that = this;
+			var prevCanvasX = 0;
+			var prevCanvasY = 0;
+			data.forEach(function(item, i) {
+				var canvasX = that.x0 + item.x;
+				var canvasY = that.y0 - item.y;
+				that.ctx.beginPath();
+				that.ctx.fillStyle = '#ccc';
+				that.ctx.moveTo(canvasX - that.dottedSize / 2, canvasY - that.dottedSize / 2);
+				that.ctx.lineTo(canvasX + that.dottedSize / 2, canvasY - that.dottedSize / 2);
+				that.ctx.lineTo(canvasX + that.dottedSize / 2, canvasY + that.dottedSize / 2);
+				that.ctx.lineTo(canvasX - that.dottedSize / 2, canvasY + that.dottedSize / 2);
+				that.ctx.closePath();
+				that.ctx.fill();
+				that.ctx.stroke();
+
+				if(i == 0) {
+					that.ctx.beginPath();
+					that.ctx.moveTo(that.x0, that.y0);
+					that.ctx.lineTo(canvasX, canvasY);
+					that.ctx.stroke();
+				} else {
+					that.ctx.beginPath();
+					that.ctx.moveTo(prevCanvasX, prevCanvasY);
+					that.ctx.lineTo(canvasX, canvasY);
+					that.ctx.stroke();
+				}
+				prevCanvasX = canvasX;
+				prevCanvasY = canvasY;
+			})
 		}
 
 		var data = [
