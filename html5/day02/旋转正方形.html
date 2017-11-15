@@ -53,6 +53,19 @@
 			background-color: pink;
 			transform: rotateX(180deg) translateZ(150px);
 		}
+		ul {
+			list-style: none;
+		}
+		li {
+			border: 1px solid #fff;
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			float: left;
+			position: relative;
+			top: 0;
+			left: 0;
+		}
 	</style>
 </head>
 <body>
@@ -71,11 +84,14 @@
 			//创建一个颜色的数组
 			var arr = ['pink',"deeppink","yellow","greenyellow","blue","red"];
 			$('.box>div').each(function(i,item) {
-				var ul = $('<ul></ul>');
+
+				var $ul = $('<ul></ul>');
 				for(var i = 0; i < 9; i++) {
-					var li = $('<li></li>');
-					li.css('backgroundColor', arr[index])
+					var $li = $('<li></li>');
+					$li.css('backgroundColor', arr[i]);
+					$ul.append($li);
 				}
+				$(item).append($ul);
 			})
 		})
 	</script>

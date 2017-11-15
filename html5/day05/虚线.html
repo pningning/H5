@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		ctx.beginPath();//开启新路径，上面的内容跟下面的无关，解决样式覆盖的问题
+		// 设置描边的颜色，都是统一的 
+		ctx.moveTo(100,100.5);
+		ctx.lineTo(300,100.5);
+		// 传一个数组，第一个参数是实线是
+		// 第二个参数：虚线的长度
+		// 第三个参数: 实线长度
+			ctx.setLineDash([5, 5, 10]);
+			console.log(ctx.getLineDash())
+			ctx.stroke();
+			// 获取的是不同重复的那一段排列方式放入数组
+			// ctx.lineDashoffset = -20;
+			// 如果是正值，往后偏移，
+			// 如果是负值，往前偏移
+	</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+			position: absolute;
+			left: 200px;
+
+		}
+	</style>
+</head>
+<body>
+	<canvas width="800px" height="600px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		// 没有独立路径的
+		// ctx.rect(0, 0, 800, 800);
+		// ctx.fill();
+		// ctx.stroke();
+		// 有独立的路径,自动描边
+		ctx.strokeRect(100,100, 100, 100);
+		//有独立的路径,,自动填充黑色
+		ctx.fillRect(400,400,200,200)
+		// 擦除矩形区域
+		ctx.clearRect(400,400,100,100);
+	</script>
+</html>

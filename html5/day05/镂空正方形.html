@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		
+		// 绘制两个正方形
+		ctx.moveTo(100, 100);
+		ctx.lineTo(300, 100);
+		ctx.lineTo(300, 300);
+		ctx.lineTo(100, 300);
+		ctx.closePath();
+		// ctx.stroke();
+		ctx.moveTo(150,150);
+		ctx.lineTo(150,250);
+		ctx.lineTo(250,250);
+		ctx.lineTo(250,150);
+		ctx.closePath();
+		ctx.fillStyle = 'red';//填充颜色
+		ctx.fill();
+		// 非零环绕规则
+		// 看一块区域是否填充
+		// 从这个区域拉一条直线
+		// 去看跟这条直线相交的轨迹
+		// 顺时针轨迹加一，逆时针轨迹减一
+		// 所有的轨迹值，计算出来，
+		// 如果非零则该区域填充
+		 //如果是零则该区域不填充
+
+	</script>
+</html>

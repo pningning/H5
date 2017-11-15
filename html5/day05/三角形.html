@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		
+		ctx.moveTo(100, 100);
+		ctx.lineTo(200, 100);
+		ctx.lineTo(200, 200);
+		// ctx.lineTo(100, 100);
+		// 描边
+		// 起始点和结束点无法完全闭合，会出现缺角的问题，无法自动闭合
+		// 使用canvas的自动闭合；
+		// ctx.closePath();//关闭路径跟beginPath没有关系
+		// ctx.stroke();
+		// 填充,默认颜色为黑色
+		ctx.fill();
+	</script>
+</html>

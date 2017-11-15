@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		// 网格的大小
+		var grid = 10;
+		// 横线的条数，跟画布的高度有问题
+		// var cancasHeight = myCanvas.height;//可以这么获取
+		// 另外的方法获取
+		var canvasHeight = ctx.canvas.height;//通过上下文获取宽度
+		var canvasWidth = ctx.canvas.width;
+		var xlineTotal = Math.floor(canvasHeight/grid);//获取到画多少条横线
+		var ylineTotal = Math.floor(canvasWidth/grid);//获取到画多少条横线
+		for(var i = 0; i <= xlineTotal; i++) {
+			ctx.beginPath();
+			ctx.moveTo(0, i * grid - 0.5);
+			ctx.lineTo(canvasWidth, i * grid - 0.5);
+			ctx.strokeStyle = '#eee';
+			ctx.stroke();
+		}
+		for(var i = 0; i <= ylineTotal; i++) {
+			ctx.beginPath();
+			ctx.moveTo(i * grid - 0.5, 0);
+			ctx.lineTo(i * grid - 0.5, canvasHeight);
+			ctx.strokeStyle = '#eee';
+			ctx.stroke();
+		}
+
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		ctx.beginPath();//开启新路径，上面的内容跟下面的无关，解决样式覆盖的问题
+		// 设置描边的颜色，都是统一的 
+		ctx.moveTo(100,100);
+		ctx.lineTo(200,20);
+		ctx.lineTo(300,100);
+		ctx.strokeStyle = 'blue';
+		ctx.lineWidth = 10;
+		// ctx.lineCap = 'round';
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(100,200);
+		ctx.lineTo(200,120);
+		ctx.lineTo(300,200);
+		ctx.strokeStyle = 'red';
+		ctx.lineWidth = 10;
+		ctx.lineCap = 'round';
+
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.moveTo(100,300);
+		ctx.lineTo(200,220);
+		ctx.lineTo(300,300);
+		ctx.strokeStyle = 'pink';
+		ctx.lineWidth = 10;
+		ctx.lineJoin = 'round';
+		ctx.stroke();
+	</script>
+</html>

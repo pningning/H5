@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		// 渐变的长度
+		// 渐变的长度由开始位置坐标和结束位置的坐标决定，还有方向
+		var linearGradient = ctx.createLinearGradient(400, 100, 100, 100 );
+		// 开始的颜色
+		linearGradient.addColorStop(0, 'pink');
+		// 结束的颜色的位置
+		linearGradient.addColorStop(1, 'blue');
+		ctx.fillStyle = linearGradient;
+		ctx.fillRect(100,100,400,100);
+	</script>
+</html>

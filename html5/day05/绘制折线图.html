@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+			background-color: #f1b7b7;
+			margin-left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="800px" height="500px"></canvas>
+</body>
+	<script>
+		// var myCanvas = document.querySelector('canvas');
+		// var ctx = myCanvas.getContext('2d');
+		function LineChart(ctx) {
+			this.ctx = ctx || document.querySelector('canvas').getContext('2d');
+			this.canvasWidth = this.ctx.canvas.width;
+			this.canvasHeight = this.ctx.canvas.height;
+			// 网格大小
+			this.gridSize = 10;
+			// 原点距离
+			this.space = 20;
+			//原点 坐标
+			this.x0 = this.space;
+			this.y0 = this.canvasHeight - this.space;
+			// 箭头的大小
+			this.arrowSize = 10;
+			// 原点的大小
+			this.dottedSize = 6;
+		}
+
+		// 行为方法
+		LineChart.prototype.init = function(data) {
+			// 绘制表格
+			this.drawGrid();
+			// 绘制坐标线
+			this.drawAxis();
+			// 绘制原点
+			this.drawDotted(data);
+		}
+		// 绘制表格
+		LineChart.prototype.drawGrid = function() {
+			// x轴
+			var xLineTotal = Math.floor(this.canvasHeight / this.gridSize);
+			this.ctx.strokeStyle = '#fff';
+			for(var i = 0; i <= xLineTotal; i++) {
+				this.ctx.beginPath();
+				this.ctx.moveTo(0, i * this.gridSize - 0.5);
+				this.ctx.lineTo(this.canvasWidth, i * this.gridSize - 0.5);
+				this.ctx.stroke();
+			}
+			// y轴
+			var yLineTotal = Math.floor(this.canvasWidth / this.gridSize);
+			for(var i = 0; i < yLineTotal; i++) {
+				this.ctx.beginPath();
+				this.ctx.moveTo(i * this.gridSize, 0);
+				this.ctx.lineTo(i * this.gridSize, this.canvasHeight);
+				this.ctx.stroke();
+			}
+		}
+		// 绘制坐标线
+		LineChart.prototype.drawAxis = function() {
+			// x轴
+			this.ctx.beginPath();
+			this.ctx.strokeStyle = '#655656';
+			this.ctx.moveTo(this.x0, this.y0);
+			this.ctx.lineTo(this.canvasWidth - this.space, this.y0);
+			this.ctx.lineTo(this.canvasWidth - this.space - this.arrowSize, this.y0 - this.arrowSize / 2);
+			this.ctx.lineTo(this.canvasWidth - this.space - this.arrowSize, this.y0 + this.arrowSize / 2);
+			this.ctx.lineTo(this.canvasWidth - this.space, this.y0);
+			// this.ctx.fill();
+			this.ctx.stroke();
+		}
+		// 绘制原点
+		LineChart.prototype.drawDotted = function() {
+			
+		}
+
+		var data = [
+			{
+				x: 200,
+				y: 100
+			},
+			{
+				x: 300,
+				y: 200
+			},
+			{
+				x: 100,
+				y: 300
+			},
+			{
+				x: 500,
+				y: 400
+			},
+			{
+				x: 300,
+				y: 400
+			}
+		]
+		var lineChart = new LineChart();
+		lineChart.init(data);
+
+	</script>
+</html>
