@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+
+		// 线是由点得来的
+
+		// 公式 ： y = 2x;
+		for(var i = 1; i < 600; i++){
+			var x = i;
+			var y = 2 * x;
+			// ctx.beginPath();
+			ctx.lineTo(x, y);
+
+		}
+		ctx.stroke();
+		
+	</script>
+</html>

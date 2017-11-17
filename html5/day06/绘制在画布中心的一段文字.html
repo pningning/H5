@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+
+		// 声明一段文字
+		var str = '您吃了吗';
+		// 画十字线
+		var w = ctx.canvas.width;
+		var h = ctx.canvas.height;
+		var x0 = w / 2;
+		var y0 = h / 2;
+		ctx.beginPath();
+		ctx.moveTo(0, y0 - 0.5);
+
+		// 绘制文本的起点做左下角
+		// 绘制矩形的起点在左上角
+
+		// 文本的属性设置
+		ctx.font = '20px Microsoft YaHei';//可以设置字体的尺寸，字体，有先后顺序
+		// 对齐的方式 基于起点坐标来的 （向右对齐）
+		// center left right start end 
+
+		ctx.textAlign = 'center';
+		// 基线：默认是基线对齐 也是基于起点坐标
+		ctx.textBaseline = 'middle';
+		// ctx.strokeText(str, x0, y0);//描边的文字
+		ctx.fillText(str, x0, y0);//填充的文字
+
+		ctx.beginPath();
+
+		var width = ctx.measureText(str).width;
+		ctx.moveTo(x0 - width / 2, y0 + 10);
+		ctx.lineTo(x0 + width / 2, y0 + 10);
+		ctx.stroke();
+	</script>
+</html>

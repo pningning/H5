@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+
+		// 绘制圆弧,确定圆心（x,y）,确定圆的半径
+		// 起始弧度，结束弧度
+		// 绘制的方向 direction ,默认是顺时针（false），逆时针：(true)
+		var w = ctx.canvas.width;
+		var h = ctx.canvas.height;
+
+		var x0 = w / 2;
+		var y0 = h / 2;
+
+		// 获取随机颜色
+		var getColor = function() {
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			return 'rgb('+ r +','+ g +','+ b +')';
+		}
+		// 几等份
+		var num = 6;
+		// 每等分的弧度
+		var angle = Math.PI*2 / num;
+		// 上一次绘制的结束弧度，等于当前次的起始弧度
+		// var startAngle = 0;有规律，所有不需要这个
+		for(var i = 0; i < num; i++) {
+			var startAngle = i * angle;
+			var endAngle = (i + 1) * angle;
+			ctx.beginPath();
+			ctx.moveTo(x0, y0);
+			ctx.arc(x0, y0, 150, startAngle, endAngle);
+			ctx.fillStyle = getColor();
+			ctx.fill();
+		}
+
+	</script>
+</html>

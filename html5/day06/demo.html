@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		
+		ctx.moveTo(100, 100);
+		ctx.lineTo(200, 100);
+		ctx.lineWidth = 20;
+		ctx.strokeStyle = 'red';
+		ctx.stroke();
+		ctx.beginPath();
+		ctx.moveTo(200, 200);
+		ctx.lineTo(300, 200);
+		ctx.stroke();
+
+		//开启新路径，如果样式不重新设置的话，会继承上面设置的样式，如果设置了的话，也不干涉上面设置的样式 
+	</script>
+</html>

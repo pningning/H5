@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600px" height="400px"></canvas>
+</body>
+	<script>
+		var myCanvas = document.querySelector('canvas');
+		var ctx = myCanvas.getContext('2d');
+		// 绘制图片的三种方式
+		// 1，加载脱到内存中
+		// var img = document.createElement('img');
+		// img.src = ''
+		// 1.创建对象
+		var image = new Image();
+		
+		// 必须等图片加载完毕之后才能使用
+		// 2，绑定加载完成事件
+		image.onload = function() {
+			// 在这里就是图片已经完全加载完了，可以使用图片了
+			// ctx.drawImage(image, 100, 100);//图片，x坐标，y坐标
+
+
+			// ctx.drawImage(image,100, 100, 100, 100);//图片对象，x 和 y , 图片的大小： 缩放，不是裁剪
+
+			ctx.drawImage(image, 100, 100, 1000, 1000, 100, 100,100, 100)
+			// 第一对坐标：position
+			// 第二对坐标：图片的定位坐标 x ,y, 在图片上截取多大的区域
+			// 第三对坐标 绘制在画不布上的大小
+			// 第三对坐标：图片的大小，不是裁剪，是缩放
+		}
+		//3. 设置图片路径
+		image.src = 'image/02.jpg';
+	</script>
+</html>
