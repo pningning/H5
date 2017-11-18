@@ -1,0 +1,69 @@
+/*第一步公用样式*/
+
+/*================重置样式================*/
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	/*统一元素的尺寸计算方式，为从边框开始计算*/
+	/*作用，流式布局防止内容溢出*/
+	/*这里加上webkit 可以兼容更早的浏览器*/
+	-webkit-box-sizing: border-box;
+	/*轻触高亮颜色，手机点一个按钮的时候，高亮显示的颜色*/
+	/*可以设置，也可以清除，清除:transparent*/
+	-webkit-tap-highlight-color: transparent;
+}
+body {
+	font-size: 14px;
+	color: #333;
+	/*font-family: ;*/
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+ul {
+	list-style: none;
+}
+input[type="text"],input[type="password"],input[type="search"],textarea {
+	border: none;
+	outline: none;
+	/*针对文本域，不让用户改变尺寸*/
+	resize: none;
+	/*在移动端有立体样式默认的样式，要清掉*/
+	/*外观,不带任何外观样式*/
+	-webkit-appearance: none;
+}
+
+
+/*========公用样式=======*/
+.f_left {
+	float: left;
+}
+.f_right {
+	float: right;
+}
+/*清除浮动*/
+.clearfix::before,
+.clearfix::after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+.mb10 {
+	margin-bottom: 10px;
+}
+/*使用精灵图*/

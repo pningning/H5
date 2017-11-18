@@ -1,0 +1,282 @@
+/*图片去掉下间隙
+1,转化为diapaly: block;
+2,设置对齐方式
+3，font-size: 0;给父容器设置
+
+
+*/
+
+/*box-shadw:6个参数   x,y轴的偏移量，模糊度，阴影的延伸 内外阴影*/
+body {
+	background-color: #f5f5f5;
+}
+.jd_layout {
+	width: 100%;
+	max-width: 640px;
+	min-width: 320px;
+	margin: 0 auto;
+}
+
+/*顶部搜索*/
+/*.jd_search {
+	position: fixed;
+	/*fixed是基于浏览器定位的*/
+	/*使用的是元素的默认位置*/
+	/*width: 100%;
+	height: 40px;
+	
+}*/
+/*子容器的100%，是基于父容易内容的100%来决定，
+不是父容易的整体宽度决定*/
+
+.jd_search {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+.jd_search .jd_search_box {
+	width: 100%;
+	max-width: 640px;
+	min-width: 320px;
+	background-color: rgba(201, 21, 35, 0.85);
+	margin: 0 auto;
+	height: 40px;
+	position: relative;
+}
+
+.jd_search .jd_search_box .icon_logo {
+	position: absolute;
+	top: 10px;
+	left: 2px;
+	width: 60px;
+	height: 40px;
+	background: url(../images/sprites.png) 0px -109px no-repeat/ 200px 200px;
+}
+.jd_search .jd_search_box form {
+	width: 100%;
+	height: 40px;
+	padding: 0 50px 0 63px;
+	position: relative;
+}
+.jd_search .jd_search_box form .icon_search {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	left: 67px;
+	background: url(../images/sprites.png) -60px -109px no-repeat/ 200px 200px;
+}
+.jd_search .jd_search_box form input {
+	width: 100%;
+	height: 30px;
+	border-radius: 15px;
+	padding-left: 28px;
+	margin-top: 5px;
+}
+.jd_search .jd_search_box .login {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+}
+
+/*轮播图*/
+.jd_banner {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.jd_banner ul:first-child {
+	width: 1000%;
+	transform: translateX(-10%);
+	-webkit-transform: translateX(-10%);
+}
+.jd_banner ul:first-child li {
+	width: 10%;
+	float: left;
+}
+.jd_banner ul:first-child li a {
+	width: 100%;
+	display: block;
+
+}
+.jd_banner ul:first-child li a img {
+	width: 100%;
+	display: block;
+}
+.jd_banner ul:last-child {
+	position: absolute;
+	left: 260px;
+	bottom: 8px;
+}
+.jd_banner ul:last-child li {
+	float: left;
+	width: 6px;
+	height: 6px;
+	border-radius: 3px;
+	border: 1px solid #fff;
+	margin-right: 10px;
+}
+.jd_banner ul:last-child .now {
+	background-color: #fff;
+}
+
+/*导航栏*/
+.jd_nave {
+	width: 100%;
+	background-color: #fff;
+	padding: 10px 0;
+}
+.jd_nave ul li {
+	width: 25%;
+	float: left;
+	padding: 0 4px;
+}
+.jd_nave ul li a {
+	display: block;
+	width: 100%;
+	font-size: 12px;
+	text-align: center;
+}
+.jd_nave ul li a img {
+	width: 40px;
+	height: 40px;
+	display: block;
+	margin: 0 auto;
+	
+}
+.jd_nave ul li a p {
+	padding: 10px 0;
+}
+
+.jd_product {
+	width: 100%;
+	padding: 0 5px;
+}
+.jd_product .jd_pro_box {
+	width: 100%;
+	background-color: #fff;
+	margin-top: 10px;
+	box-shadow: 0 0 1px #ccc;
+}
+.jd_product .jd_pro_box .title {
+	width: 100%;
+	height: 34px;
+	border-bottom: 1px solid #ddd;
+	line-height: 34px;
+}
+.jd_product .sk .nb {
+	border: none;
+}
+
+.jd_product .title h3 {
+	font-weight: normal;
+	padding-left: 20px;
+	position: relative;
+}
+.jd_product .title h3::before {
+	content: "";
+	width: 3px;
+	height: 12px;
+	background-color: #d8505c;
+	position: absolute;
+	top: 12px;
+	left: 10px;
+}
+.jd_product .con {
+	width: 100%;
+}
+.b_bottom {
+	border-bottom: 1px solid #ccc;
+}
+.b_right {
+	border-right: 1px solid #ccc;
+}
+.b_left {
+	border-left: 1px solid #ccc;
+}
+.w_50 {
+	width: 50%;
+}
+.w_50 img {
+	display: block;
+	width: 100%;
+}
+/*秒杀*/
+.sk .sk_icon {
+	width: 16px;
+	height: 20px;
+	margin: 6px 0 0 10px;
+	background:url(../images/seckill-icon.png) 0 0 no-repeat/ 16px 20px;
+}
+.sk .sk_name {
+	height: 34px;
+	font-size: 14px;
+	color: #d8505c;
+	line-height: 34px;
+	text-align: center;
+	display: block;
+	padding: 0 15px;
+}
+.sk .sk_time span {
+	float: left;
+	width: 16px;
+	font-size: 12px;
+	display: block;
+	line-height: 16px;
+	text-align: center;
+	margin-right:3px;
+	margin-top: 10px;
+	background-color: #333;
+	color: #fff;
+}
+.sk .sk_time span:nth-child(3n) {
+	background-color: #fff;
+	color: #333;
+	width: 3px;
+}
+
+.sk .con {
+	width: 100%;
+}
+.sk .con .sk_product {
+	width: 100%;
+
+}
+.sk .con .sk_product li {
+	width: 33.3333%;
+	float: left;
+	padding: 15px 0;
+}
+
+.sk .con .sk_product li a {
+	display: block;
+	width: 100%;
+	border-right: 1px solid #ccc;
+}
+.sk .con .sk_product li:last-child a {
+	border: 0;
+}
+.sk .con .sk_product li img {
+	display: block;
+	width: 64%;
+	margin: 0 auto;
+}
+.sk .sk_product p {
+	font-size: 12px;
+	text-align: center;
+	padding-top: 5px;
+}
+.sk .con .sk_product .newp {
+	color: #d8505c;
+}
+.sk .sk_product p:last-child {
+	color: #666;
+	text-decoration: line-through;
+}
