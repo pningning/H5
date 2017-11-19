@@ -1,0 +1,56 @@
+/*初始化样式*/
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+body {
+	color: #333;
+	font-size: 14px;
+	font-family: "Microsoft YaHei", sans-serif;
+}
+a {
+	text-decoration: none;
+	color: #ccc;
+}
+ul {
+	list-style: none;
+}
+input[type="text"],input[type="password"],input[type="search"],textarea {
+	border: 0;
+	outline: none;
+	resize: none;
+	/*移动端输入框的默认立体样式*/
+	-webkit-appearance: none;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.clearfix::before,
+.clearfix::after {
+	content: "";
+	display: block;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	clear: both;
+}
+.ml10 {
+	margin-left: 10px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+.mb10 {
+	margin-bottom: 10px;
+}
