@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta>
+	<title>Document</title>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+<script>
+	// tap （轻触）事件： 
+	// 不是移动端原生事件，通过一些开发者，或者一些库封装的一个事件
+	// 2.click 在移动端也可以用，但是有300ms左右的延迟(缩放网页。浏览器需要监听到双击的操作去缩放网页，体验不好)
+	// 提高体验： 提高click的响应速度
+	// tap响应速度比click更快，提高点击的速度
+	// 
+	// tap: 两个条件： 1，不能滑动，2，响应在150ms之内，成为tap事件
+	// click 延迟解决方案1，使用 tap ，借助一些库 zepto.js
+	// 解决方案2，插件fastclick.js 去除延时，继续使用click
+	// githup里面去下载
+	// cdn加速  
+
+	// DOMContentLoaded 文档加载完事件
+
+
+	// 模拟一个tap事件
+
+	var bindTop = function(dom, callback) {
+		// 1，给谁绑定
+		// 2.触发之后执行什么事callback()
+
+
+		// 
+		var isMove = false;
+		var startTime = 0;
+		dom.addEventListener('touchstart', function(e) {
+			var startTime = Date.now();
+		})
+
+		dom.addEventListener('touchmove', function(e) {
+			isMove = true;
+		})
+
+		dom.addEventListener('touchend', function(e) {
+			var endTime = Date.now();
+			if(!isMove && (endTime - startTiem) < 150) {
+				callback && callback.call(this, e);
+			}
+		})
+	}	
+</script>
+</html>
