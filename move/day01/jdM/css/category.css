@@ -74,6 +74,7 @@ html,body {
 }
 .jd_content .jd_content_left li{
 	width: 100%;
+	background-color: #f3f4f5;
 }
 .jd_content .jd_content_left li a {
 	display: block;
@@ -85,7 +86,13 @@ html,body {
 	border-bottom: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
-
+.jd_content .jd_content_left li.now {
+	background-color: #fff;
+}
+.jd_content .jd_content_left .now a {
+	border-right: 0;
+	color: #d8505c;
+}
 /*右侧边栏*/
 
 .jd_content_right {

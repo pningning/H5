@@ -1,0 +1,41 @@
+/*=======公用样式========*/
+a {
+	color: #333;
+}
+a:hover {
+	text-decoration: none;
+	color: #333;
+}
+/*==========模块样式=============*/
+/*+ 紧邻的下一个元素
+ ~ 同一级下面所有的元素
+*/
+.wjs_topBar {
+	border-bottom: 1px solid #ccc;
+	font-size: 12px;
+}
+.wjs_topBar > .container > .row > div{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+.wjs_topBar > .container > .row > div + div {
+	border-left: 1px solid #ccc;
+}
+.wjs_topBar > .container > .row .wjs_downApp {
+	display: block;
+	position: relative;
+}
+
+.wjs_downApp img {
+	border: 1px solid #ccc;
+	border-top: none;
+	position: absolute;
+	left: 50%;
+	top: 40px;
+	margin-left: -60px;
+	display: none;
+}
+.wjs_downApp:hover img {
+	display: block;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		.container {
+			height: 1000px;
+			margin: 0 auto;
+		}
+		@media screen and (max-width: 768px) {
+			.container {
+				width: 100%;
+				background-color: pink;
+			}
+		}
+
+		@media screen and (max-width: 992px) and (min-width: 768px) {
+			.container {
+				width: 750px;
+				background-color: green;
+			}
+		}
+		@media screen and (max-width: 1200px) and (min-width: 992px) {
+			.container {
+				width: 970px;
+				background-color: red;
+			}
+		}
+		@media screen and (min-width: 1200px) {
+			.container {
+				width: 1170px;
+				background-color: blue;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>媒体查询，Media query 响应式开发原理</p>
+		<p>超小屏: 768px以下 xs</p>
+		<p>小屏：768px-992px之间 sm</p>
+		<p>中屏：992px-1200px之间 md</p>
+		<p>大屏：1200px以上 lg</p>
+	</div>
+</body>
+</html>

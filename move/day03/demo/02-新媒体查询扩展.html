@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			height: 1000px;
+			margin: 0 auto;
+		}
+
+		@media (min-width: 1200px) {
+			.container {
+				width: 1170px;
+				background-color: pink;
+			}
+		}
+		@media (max-width: 1200px) {
+			.container {
+				width: 970px;
+				background-color: red;
+			}
+		}
+		@media (max-width: 992px) {
+			.container {
+				width: 750px;
+				background-color: blue;
+			}
+		}
+		@media (max-width: 768px) {
+			.container {
+				width: 100%;
+				background-color: green;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<p>这个方法通过的是样式覆盖覆盖，优先级的方法，处理每个设备的显示情况</p>
+	</div>
+</body>
+</html>

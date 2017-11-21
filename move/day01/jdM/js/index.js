@@ -157,6 +157,8 @@
 
   	// 触摸移动
   	imageBox.addEventListener('touchmove', function(e){
+      // 取消浏览器切换页面的默认行为
+      e.preventDefault();
   		isMove = true;
   		var moveX = e.touches[0].clientX;
   		distanceX = moveX - startX;
@@ -169,26 +171,28 @@
   	})
   	// 触摸离开
   	imageBox.addEventListener('touchend', function(){
-  		// 移动的距离，以轮播图宽度的1/3做参考
-  		if(Math.abs(distanceX) < width / 3) {
-  			// 吸附，以动画的形式，变回原来的定位
-  			addTransition();
-  			setTranslateX(-index * width);
+  		if(isMove) {
+          // 移动的距离，以轮播图宽度的1/3做参考
+        if(Math.abs(distanceX) < width / 3) {
+          // 吸附，以动画的形式，变回原来的定位
+          addTransition();
+          setTranslateX(-index * width);
 
-  		}else {
-  			// 切换
-  			if(distanceX > 0) {
-  				//右滑，上一张
-  				// 先加动画。，在移动
-  				index--;
-  			}else{
-  				// 左滑，下一张
-  				index++;
-  			}
-  		}
-  		addTransition();
-  		setTranslateX(-index * width);
+        }else {
+          // 切换
+          if(distanceX > 0) {
+            //右滑，上一张
+            // 先加动画。，在移动
+            index--;
+          }else{
+            // 左滑，下一张
+            index++;
+          }
+        }
+        addTransition();
+        setTranslateX(-index * width);
 
+      }
   		// 初始化变量
   		startX = 0;
   		distanceX = 0;
