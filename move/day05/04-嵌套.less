@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+.wjs_toBar {
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  > .container {
+    height: 100px;
+    width: 100px;
+  }
+  > .box {
+    > div {
+      a {
+        height: 200px;
+        width: 100px;
+        ~ a {
+          background-color: red;
+        }
+        + a {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .btn-register {
+    background-color: red;
+    font-size: 20px;
+    &:hover {
+      background-color: #ccc;
+    }
+    &::before {
+      content: "你好啊";
+    }
+    &:first-child {
+      background-color: #fff;
+    }
+  }
+}
+
+
+//嵌套如果是伪元素选择器或者伪类选择器
+

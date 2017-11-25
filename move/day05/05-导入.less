@@ -1,0 +1,24 @@
+@charset "utf-8";
+@import "02-样式的混入";
+@import "01-variable";
+@import "04-嵌套";
+.box {
+     .w();
+   }
+
+//运算 和内置函数
+
+@num:20;
+@width: 100px;
+.box10 {
+  width: @width / @num;
+}
+
+ul {
+  width: @width;
+  border-color: darken(red,50%);
+  li {
+    width: @width / @num;
+    border-color: darken(red,20%);
+  }
+}

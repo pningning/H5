@@ -1,0 +1,70 @@
+@charset "utf-8";
+//混入分为两种
+//1样式的混入
+//.w {
+//  width: 50%;
+//}
+//
+//.fl {
+//  float: left;
+//}
+//.br {
+//  border-right: 1px solid #ccc;
+//}
+//.bl {
+//  border-left: 1px solid #ccc;
+//}
+
+//宽50% 右浮动的左边框
+
+//.box {
+//  .w();
+//  .fl();
+//  .bl();
+//}
+
+//函数的混入
+
+.w() {
+  width: 100%;
+}
+.fl() {
+  float: left;
+}
+.fr() {
+  float: right;
+}
+.bl() {
+  border-left: 1px solid #ccc;
+}
+.br() {
+  border-right: 1px solid red;
+}
+.box {
+  .w();
+  .bl();
+  .fl();
+}
+
+
+//参数的定义
+//参数的定义和变量的一样
+//如果定义参数没有传参就会报错
+//但是有一种情况不需要传参
+//给参数设置默认值之后
+
+.float(@color:red) {
+  color: @color;
+}
+
+.box2 {
+ .float();
+}
+
+.border(@direction:left) {
+  border-@{direction}: 1px solid #ccc;
+}
+
+.box3 {
+  .border(right);
+}
