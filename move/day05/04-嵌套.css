@@ -1,0 +1,32 @@
+@charset "utf-8";
+.wjs_toBar {
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+}
+.wjs_toBar > .container {
+  height: 100px;
+  width: 100px;
+}
+.wjs_toBar > .box > div a {
+  height: 200px;
+  width: 100px;
+}
+.wjs_toBar > .box > div a ~ a {
+  background-color: red;
+}
+.wjs_toBar > .box > div a + a {
+  background-color: #fff;
+}
+.wjs_toBar .btn-register {
+  background-color: red;
+  font-size: 20px;
+}
+.wjs_toBar .btn-register:hover {
+  background-color: #ccc;
+}
+.wjs_toBar .btn-register::before {
+  content: "你好啊";
+}
+.wjs_toBar .btn-register:first-child {
+  background-color: #fff;
+}

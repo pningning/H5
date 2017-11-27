@@ -1,0 +1,13 @@
+@charset "utf-8";
+//定义项目所有的混入函数
+//定义一个函数.实现循环，在less里面没有遍历数组方法，但是可以使用跌代（函数自调用）
+
+.adapterFuc(@index) when (@index <= @len ) {
+  @media (min-width: extract(@adapterDeviceList, @index)) {
+    html {
+      font-size: extract(@adapterDeviceList, @index) / @psdSize * @baseFontSize;
+    }
+  }
+  .adapterFuc(@index + 1);
+}
+

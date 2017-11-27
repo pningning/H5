@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div {
+			width: 100px;
+			height: 40px;
+			position: relative;
+		}
+		p {
+			display: inline-block;
+			width: 100px;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			margin: 0;
+			padding: 0;
+		}
+		div::before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			right: 50%;
+			bottom: 0;
+			height: 3px;
+			transition: all 0.3s ease-out;
+			background: #00aeff
+		}
+ 		div:hover::before {
+ 			content: "哈哈";
+ 			left: 0;
+    		right: 0
+ 		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p>新闻列表</p>
+	</div>
+
+	<!-- 原理，先添加一个伪元素，先点位到中间，然后鼠标移上的时候，在让伪元素，往两边移开，成现在的效果 -->
+</body>
+</html>

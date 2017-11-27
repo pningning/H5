@@ -1,0 +1,14 @@
+@charset "utf-8";
+@mainColor:#e92333;
+.box {
+  color: @mainColor;
+}
+
+//拼接变量
+//把变量名用{} 包裹起来
+
+@className:wjs;
+
+.@{className}banner {
+  border: 1px solid #ccc;
+}

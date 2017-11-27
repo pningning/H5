@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+    <title></title>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <!--条件注释-->
+    <!--[if lt IE 9]>
+    <script src="suning/html5shiv/html5shiv.min.js"></script>
+    <script src="suning/respond/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+        /*字体图标*/
+        @font-face {
+          font-family: heima37;
+          src:
+            url(../fonts/MiFie-Web-Font.svg) format('svg'),
+            url(../fonts/MiFie-Web-Font.woff) format('woff'),
+            url(../fonts/MiFie-Web-Font.eot) format('embedded-opentype'),
+            url(../fonts/MiFie-Web-Font.ttf) format('ruetype');
+        }
+        /*通过一个类使用新字体*/
+        .wjs_icon {
+          font-family: heima37;
+        }
+        .wjs_icon_type::before {
+            content: "";
+        }
+        .wjs_icon_name::before {
+            content: "";
+        }
+
+        .wjs_nav {
+          background-color: #fff;
+          border-color: #e7e7e7;
+          border-top: none;
+          margin-bottom: 0;
+        }
+        .wjs_nav .navbar-brand {
+          color: #777;
+          height: 80px;
+          line-height: 50px;
+        }
+        .wjs_nav .navbar-brand:hover,
+        .wjs_nav .navbar-brand:focus {
+          color: #5e5e5e;
+          background-color: transparent;
+        }
+        .wjs_nav .navbar-text {
+          color: #777;
+        }
+        .wjs_nav .navbar-nav > li > a {
+          color: #777;
+          height: 80px;
+          line-height: 50px;
+        }
+        .wjs_nav .navbar-nav > li > a:hover,
+        .wjs_nav .navbar-nav > li > a:focus {
+          color: #333;
+          background-color: transparent;
+          border-bottom: 3px solid #e92322;
+        }
+        .wjs_nav .navbar-nav > .active > a,
+        .wjs_nav .navbar-nav > .active > a:hover,
+        .wjs_nav .navbar-nav > .active > a:focus {
+          color: #555;
+          background-color: #fff;
+          border-bottom: 3px solid #e92322;
+        }
+        .wjs_nav .navbar-nav > .disabled > a,
+        .wjs_nav .navbar-nav > .disabled > a:hover,
+        .wjs_nav .navbar-nav > .disabled > a:focus {
+          color: #ccc;
+          background-color: transparent;
+          /*border-bottom: 3px solid #e92322;*/
+        }
+        .wjs_nav .navbar-toggle {
+          border-color: #ddd;
+          margin-top: 23px;
+        }
+        .wjs_nav .navbar-toggle:hover,
+        .wjs_nav .navbar-toggle:focus {
+          background-color: #ddd;
+        }
+        .wjs_nav .navbar-toggle .icon-bar {
+          background-color: #888;
+        }
+        .wjs_nav .navbar-collapse,
+        .wjs_nav .navbar-form {
+          border-color: #e7e7e7;
+        }
+        .wjs_nav .navbar-nav > .open > a,
+        .wjs_nav .navbar-nav > .open > a:hover,
+        .wjs_nav .navbar-nav > .open > a:focus {
+          color: #555;
+          background-color: #e7e7e7;
+        }
+        @media (max-width: 767px) {
+          .wjs_nav .navbar-nav .open .dropdown-menu > li > a {
+            color: #777;
+          }
+          .wjs_nav .navbar-nav .open .dropdown-menu > li > a:hover,
+          .wjs_nav .navbar-nav .open .dropdown-menu > li > a:focus {
+            color: #333;
+            background-color: transparent;
+          }
+          .wjs_nav .navbar-nav .open .dropdown-menu > .active > a,
+          .wjs_nav .navbar-nav .open .dropdown-menu > .active > a:hover,
+          .wjs_nav .navbar-nav .open .dropdown-menu > .active > a:focus {
+            color: #555;
+            background-color: #e7e7e7;
+          }
+          .wjs_nav .navbar-nav .open .dropdown-menu > .disabled > a,
+          .wjs_nav .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+          .wjs_nav .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+            color: #ccc;
+            background-color: transparent;
+          }
+        }
+        .wjs_nav .navbar-link {
+          color: #777;
+        }
+        .wjs_nav .navbar-link:hover {
+          color: #333;
+        }
+        .wjs_nav .btn-link {
+          color: #777;
+        }
+        .wjs_nav .btn-link:hover,
+        .wjs_nav .btn-link:focus {
+          color: #333;
+        }
+        .wjs_nav .btn-link[disabled]:hover,
+        fieldset[disabled] .wjs_nav .btn-link:hover,
+        .wjs_nav .btn-link[disabled]:focus,
+        fieldset[disabled] .wjs_nav .btn-link:focus {
+          color: #ccc;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar wjs_nav">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <span class=".wjs_icon_type"></span>
+        <span class=".wjs_icon_name"></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">我要投资</a></li>
+        <li><a href="#">我要借款</a></li>
+        <li><a href="#">平台介绍</a></li>
+        <li><a href="#">新手专区</a></li>
+        <li><a href="#">最新动态</a></li>
+        <li><a href="#">微平台</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right hidden-sm">
+        <li><a href="#">个人中心</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
